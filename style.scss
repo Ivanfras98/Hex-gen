@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@function random-hex() {
+  $finishedcolor: "#";
+  @for $i from 1 through 6 {
+    $number: random(16) - 1;
+    @if $number < 10 {
+      $finishedcolor: $finishedcolor + quote($number);
+    } @else {
+      @if $number == 10 {
+        $finishedcolor: $finishedcolor + "A";
+      } @else {
+        @if $number == 11 {
+          $finishedcolor: $finishedcolor + "B";
+        } @else {
+          @if $number == 12 {
+            $finishedcolor: $finishedcolor + "C";
+          } @else {
+            @if $number == 13 {
+              $finishedcolor: $finishedcolor + "D";
+            } @else {
+              @if $number == 14 {
+                $finishedcolor: $finishedcolor + "E";
+              } @else {
+                @if $number == 15 {
+                  $finishedcolor: $finishedcolor + "F";
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @return unquote($finishedcolor);
+}
+
+body {
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  .col {
+    @for $i from 0 to 12 {
+      &:nth-child(#{$i}) {
+        background: random-hex();
+      }
+    }
+  }
+}
