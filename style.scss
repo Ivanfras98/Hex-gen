@@ -9,7 +9,7 @@
   @for $i from 1 through 6 {
     $number: random(16) - 1;
     @if $number < 10 {
-      $finishedcolor: $finishedcolor + quote($number);
+      $finishedcolor: $finishedcolor + $number;
     } @else {
       @if $number == 10 {
         $finishedcolor: $finishedcolor + "A";
